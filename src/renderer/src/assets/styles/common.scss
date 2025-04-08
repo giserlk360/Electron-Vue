@@ -1,0 +1,95 @@
+@use './variables.scss' as vars;
+@use "sass:math";
+
+// 基础样式重置
+body {
+  margin: 0;
+  padding: 0;
+  font-family: vars.$font-family;
+  background-color: vars.$bg-color;
+  @include vars.transition(background-color);
+}
+
+#app {
+  height: 100vh;
+  width: 100%;
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: vars.$card-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background: vars.$border-color;
+  border-radius: calc(vars.$border-radius-sm / 2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: vars.$primary-color;
+}
+
+// Element Plus 组件样式覆盖
+.el-card {
+  --el-card-bg-color: #{vars.$card-bg} !important;
+  @include vars.transition(background-color);
+}
+
+// 全局过渡效果
+* {
+  transition:
+    color vars.$transition-time,
+    background-color vars.$transition-time,
+    border-color vars.$transition-time;
+}
+
+// 辅助类
+.flex-center {
+  @include vars.flex-center;
+}
+
+.flex-between {
+  @include vars.flex-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+// 间距类
+.m-0 { margin: 0; }
+.mt-1 { margin-top: vars.$spacing-xs; }
+.mt-2 { margin-top: vars.$spacing-sm; }
+.mt-3 { margin-top: vars.$spacing-md; }
+.mt-4 { margin-top: vars.$spacing-lg; }
+.mb-1 { margin-bottom: vars.$spacing-xs; }
+.mb-2 { margin-bottom: vars.$spacing-sm; }
+.mb-3 { margin-bottom: vars.$spacing-md; }
+.mb-4 { margin-bottom: vars.$spacing-lg; }
+.ml-1 { margin-left: vars.$spacing-xs; }
+.ml-2 { margin-left: vars.$spacing-sm; }
+.mr-1 { margin-right: vars.$spacing-xs; }
+.mr-2 { margin-right: vars.$spacing-sm; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: vars.$spacing-xs; }
+.p-2 { padding: vars.$spacing-sm; }
+.p-3 { padding: vars.$spacing-md; }
+.p-4 { padding: vars.$spacing-lg; } 

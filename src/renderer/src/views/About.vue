@@ -81,11 +81,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import {
-    Monitor,
-    Grid,
-    Sunny,
-    Collection,
-    Histogram,
     Link,
     Message,
     Phone,
@@ -111,158 +106,157 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@use '../assets/styles/variables.scss' as vars;
+
 .about-container {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    padding: vars.$spacing-md;
+    @include vars.flex-center;
 }
 
 .about-card {
     max-width: 800px;
     width: 100%;
-    background-color: var(--card-background);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    background-color: vars.$card-bg;
+    border-radius: vars.$border-radius-lg;
+    box-shadow: vars.$box-shadow;
     overflow: hidden;
 }
 
 .card-header {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--el-border-color);
+    padding: vars.$spacing-md;
+    @include vars.flex-between;
+    border-bottom: 1px solid vars.$border-color;
 }
 
 .title {
     font-size: 24px;
-    color: var(--el-text-color-primary);
+    color: vars.$text-primary;
     margin: 0;
 }
 
 .version {
-    font-size: 14px;
-    color: var(--el-text-color-secondary);
+    font-size: vars.$font-size-small;
+    color: vars.$text-secondary;
     padding: 4px 8px;
     background-color: var(--el-color-primary-light-9);
-    border-radius: 4px;
+    border-radius: vars.$border-radius-sm;
 }
 
 .card-content {
-    padding: 20px;
+    padding: vars.$spacing-md;
 }
 
 .app-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: vars.$spacing-md;
 }
 
 .logo {
     height: 60px;
-    margin-bottom: 16px;
+    margin-bottom: vars.$spacing-md;
 }
 
 .app-name {
-    font-size: 20px;
+    font-size: vars.$font-size-large;
     font-weight: 600;
-    color: var(--el-text-color-primary);
-    margin: 8px 0;
+    color: vars.$text-primary;
+    margin: vars.$spacing-xs 0;
 }
 
 .app-desc {
-    color: var(--el-text-color-secondary);
+    color: vars.$text-secondary;
     text-align: center;
 }
 
 .tech-stack {
-    margin: 20px 0;
+    margin: vars.$spacing-md 0;
 }
 
 .tech-item {
     display: flex;
     align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: var(--hover-background);
-    border-radius: 6px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+    padding: vars.$spacing-sm;
+    margin-bottom: vars.$spacing-sm;
+    background-color: vars.$hover-bg;
+    border-radius: vars.$border-radius-md;
+    @include vars.transition;
 
-.tech-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: vars.$box-shadow-hover;
+    }
 }
 
 .tech-icon {
     font-size: 24px;
-    color: var(--el-color-primary);
-    margin-right: 10px;
+    color: vars.$primary-color;
+    margin-right: vars.$spacing-sm;
 }
 
 .tech-name {
     font-weight: 500;
-    color: var(--el-text-color-primary);
+    color: vars.$text-primary;
 }
 
 .tech-version {
-    font-size: 12px;
-    color: var(--el-text-color-secondary);
+    font-size: vars.$font-size-small;
+    color: vars.$text-secondary;
 }
 
 .author-info {
     display: flex;
     align-items: center;
-    margin: 20px 0;
+    margin: vars.$spacing-md 0;
 }
 
 .author-avatar {
-    background-color: var(--el-color-primary);
+    background-color: vars.$primary-color;
     color: white;
     font-size: 24px;
     font-weight: bold;
-    margin-right: 20px;
+    margin-right: vars.$spacing-md;
 }
 
 .author-name {
-    font-size: 18px;
+    font-size: vars.$font-size-medium;
     font-weight: 600;
-    color: var(--el-text-color-primary);
-    margin: 0 0 8px 0;
+    color: vars.$text-primary;
+    margin: 0 0 vars.$spacing-xs 0;
 }
 
 .author-bio {
-    color: var(--el-text-color-secondary);
-    margin: 0 0 12px 0;
+    color: vars.$text-secondary;
+    margin: 0 0 vars.$spacing-sm 0;
 }
 
 .author-links {
     display: flex;
-    gap: 16px;
+    gap: vars.$spacing-md;
 }
 
 .contact-info {
-    margin: 20px 0;
+    margin: vars.$spacing-md 0;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    color: var(--el-text-color-primary);
-}
+    margin-bottom: vars.$spacing-sm;
+    color: vars.$text-primary;
 
-.contact-item .el-icon {
-    margin-right: 10px;
-    color: var(--el-color-primary);
+    .el-icon {
+        margin-right: vars.$spacing-sm;
+        color: vars.$primary-color;
+    }
 }
 
 .copyright {
     text-align: center;
-    margin-top: 30px;
-    color: var(--el-text-color-secondary);
-    font-size: 14px;
+    margin-top: vars.$spacing-xl;
+    color: vars.$text-secondary;
+    font-size: vars.$font-size-small;
 }
 </style>

@@ -23,7 +23,7 @@
                         </div>
                         <div class="theme-switch">
                             <div class="theme-control">
-                                <span>主题切换:</span>
+                                <span class="theme-label">主题切换:</span>
                                 <el-switch v-model="isDarkTheme" active-text="深色" inactive-text="浅色"
                                     @change="handleThemeChange" />
                             </div>
@@ -65,10 +65,12 @@ const openDemo = () => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@use '../assets/styles/variables.scss' as vars;
+
 .home-container {
     min-height: 100vh;
-    background-color: var(--app-background);
+    background-color: vars.$bg-color;
     padding: 1.5rem 0;
     display: flex;
     flex-direction: column;
@@ -85,14 +87,12 @@ const openDemo = () => {
 .gradient-background {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, var(--el-color-primary), var(--el-color-primary-dark-2));
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, vars.$primary-color, vars.$primary-dark);
+    box-shadow: vars.$box-shadow;
     transform: skewY(-6deg);
     border-radius: 1.5rem;
-}
 
-@media (min-width: 640px) {
-    .gradient-background {
+    @include vars.responsive(sm) {
         transform: rotate(-6deg);
     }
 }
@@ -100,13 +100,11 @@ const openDemo = () => {
 .card-container {
     position: relative;
     padding: 2.5rem 1rem;
-    background-color: var(--card-background);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background-color: vars.$card-bg;
+    box-shadow: vars.$box-shadow;
     border-radius: 0.5rem;
-}
 
-@media (min-width: 640px) {
-    .card-container {
+    @include vars.responsive(sm) {
         padding: 5rem;
         border-radius: 1.5rem;
     }
@@ -118,51 +116,47 @@ const openDemo = () => {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include vars.flex-between;
 }
 
 .title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--el-text-color-primary);
+    color: vars.$text-primary;
 }
 
 .version {
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--el-text-color-regular);
+    color: vars.$text-regular;
 }
 
 .divider {
-    border-top: 1px solid var(--el-border-color);
+    border-top: 1px solid vars.$border-color;
 }
 
 .description {
     padding: 2rem 0;
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--el-text-color-regular);
-}
+    color: vars.$text-regular;
 
-@media (min-width: 640px) {
-    .description {
+    @include vars.responsive(sm) {
         font-size: 1.125rem;
     }
-}
 
-.description p {
-    margin-bottom: 1rem;
+    p {
+        margin-bottom: 1rem;
+    }
 }
 
 .feature-list {
     list-style-type: disc;
     padding-left: 1.25rem;
-}
 
-.feature-list li {
-    margin-bottom: 0.5rem;
+    li {
+        margin-bottom: 0.5rem;
+    }
 }
 
 .theme-switch {
@@ -170,23 +164,25 @@ const openDemo = () => {
     font-size: 1rem;
     line-height: 1.5;
     font-weight: 700;
-}
 
-@media (min-width: 640px) {
-    .theme-switch {
+    @include vars.responsive(sm) {
         font-size: 1.125rem;
     }
 }
 
 .theme-control {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include vars.flex-between;
+
+    .theme-label {
+        color: vars.$text-regular;
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 700;
+    }
 }
 
 .button-container {
     margin-top: 2rem;
-    display: flex;
-    justify-content: center;
+    @include vars.flex-center;
 }
 </style>

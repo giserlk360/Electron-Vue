@@ -80,7 +80,9 @@ const handleThemeChange = () => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@use '../../assets/styles/variables.scss' as vars;
+
 .layout {
     display: flex;
     height: 100vh;
@@ -90,15 +92,15 @@ const handleThemeChange = () => {
 
 .sidebar {
     height: 100%;
-    transition: width 0.3s;
-    width: 200px;
-    background-color: var(--card-background);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    @include vars.transition(width);
+    width: vars.$sidebar-width;
+    background-color: vars.$card-bg;
+    box-shadow: vars.$box-shadow-light;
     z-index: 10;
-}
 
-.sidebar.collapsed {
-    width: 64px;
+    &.collapsed {
+        width: vars.$sidebar-collapsed-width;
+    }
 }
 
 .main {
@@ -109,47 +111,43 @@ const handleThemeChange = () => {
 }
 
 .header {
-    height: 60px;
-    background-color: var(--card-background);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
+    height: vars.$header-height;
+    background-color: vars.$card-bg;
+    box-shadow: vars.$box-shadow-light;
+    @include vars.flex-between;
+    padding: 0 vars.$spacing-md;
     z-index: 9;
 }
 
 .toggle-btn {
     cursor: pointer;
-    font-size: 20px;
-    color: var(--el-text-color-regular);
+    font-size: vars.$font-size-large;
+    color: vars.$text-regular;
 }
 
 .header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    @include vars.flex-center;
+    gap: vars.$spacing-md;
 }
 
 .theme-switch {
-    margin-right: 16px;
+    margin-right: vars.$spacing-md;
 }
 
 .user-dropdown {
-    display: flex;
-    align-items: center;
+    @include vars.flex-center;
     cursor: pointer;
 }
 
 .username {
-    margin-left: 8px;
-    color: var(--el-text-color-primary);
+    margin-left: vars.$spacing-xs;
+    color: vars.$text-primary;
 }
 
 .content {
     flex: 1;
-    padding: 20px;
+    padding: vars.$spacing-md;
     overflow: auto;
-    background-color: var(--app-background);
+    background-color: vars.$bg-color;
 }
 </style>

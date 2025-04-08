@@ -1,0 +1,89 @@
+@use "sass:math";
+
+// 主题色变量
+$primary-color: #409eff;
+$primary-light: #ecf5ff;
+$primary-dark: #337ecc;
+
+// 文本颜色
+$text-primary: var(--el-text-color-primary);
+$text-regular: var(--el-text-color-regular);
+$text-secondary: var(--el-text-color-secondary);
+
+// 背景色
+$bg-color: var(--app-background);
+$card-bg: var(--card-background);
+$hover-bg: var(--hover-background);
+
+// 边框颜色
+$border-color: var(--el-border-color);
+
+// 字体相关
+$font-family: 'PingFang SC', Arial, sans-serif;
+$font-size-large: 18px;
+$font-size-medium: 16px;
+$font-size-normal: 14px;
+$font-size-small: 12px;
+
+// 间距
+$spacing-xl: 32px;
+$spacing-lg: 24px;
+$spacing-md: 16px;
+$spacing-sm: 12px;
+$spacing-xs: 8px;
+
+// 边框圆角
+$border-radius-lg: 8px;
+$border-radius-md: 6px;
+$border-radius-sm: 4px;
+
+// 阴影
+$box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+$box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.12);
+$box-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+// 动画过渡时间
+$transition-time: 0.3s;
+
+// 布局相关
+$header-height: 60px;
+$sidebar-width: 200px;
+$sidebar-collapsed-width: 64px;
+
+// 响应式断点
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1600px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin transition($property: all) {
+  transition: $property $transition-time;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == sm {
+    @media (min-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+} 

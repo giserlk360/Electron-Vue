@@ -65,7 +65,8 @@ import {
 import { getTheme, type Theme } from '../../utils/theme'
 import { eventBus } from '../../utils/eventBus'
 
-const props = defineProps({
+// 使用defineProps直接返回值以避免未使用变量警告
+const { isCollapse } = defineProps({
     isCollapse: {
         type: Boolean,
         default: false
@@ -113,30 +114,32 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@use '../../assets/styles/variables.scss' as vars;
+
 .app-menu {
     height: 100%;
-    border-right: 1px solid var(--el-border-color);
-    transition: background-color 0.3s, border-color 0.3s;
-}
+    border-right: 1px solid vars.$border-color;
+    @include vars.transition(background-color);
 
-.app-menu:not(.el-menu--collapse) {
-    width: 200px;
+    &:not(.el-menu--collapse) {
+        width: vars.$sidebar-width;
+    }
 }
 
 .logo-container {
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 0 20px;
-    transition: background-color 0.3s;
+    height: vars.$header-height;
+    @include vars.flex-center;
+    margin-bottom: vars.$spacing-lg;
+    padding: 0 vars.$spacing-md;
+    @include vars.transition(background-color);
 }
 
 .logo-text {
-    font-size: 20px;
+    color: vars.$text-primary;
+    font-size: vars.$font-size-large;
     font-weight: bold;
+    margin-right: vars.$spacing-xs;
 }
 
 .logo {
