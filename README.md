@@ -149,13 +149,6 @@ const version = window.api.getVersion()
 
 欢迎提交 Issue 或 Pull Request 来完善这个项目。
 
-## 作者
-
-**李康** - GIS工程师 / 前端工程师 / Electron爱好者
-
-- Email: likangdream@gmail.com
-- GitHub: [GitHub主页](https://github.com/giserlk360)
-
 ## 许可证
 
 MIT 
